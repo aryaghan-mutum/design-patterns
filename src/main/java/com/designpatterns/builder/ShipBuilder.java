@@ -1,6 +1,5 @@
 package com.designpatterns.builder;
 
-
 import java.util.function.Consumer;
 
 class ShipBuilder {
@@ -10,17 +9,17 @@ class ShipBuilder {
     private int capacity;
 
     public ShipBuilder buildShipName(String shipName) {
-        this.shipName = shipName; //set
+        this.shipName = shipName;
         return this;
     }
 
     public ShipBuilder buildShipLength(double length) {
-        this.length = length; //set
+        this.length = length;
         return this;
     }
 
     public ShipBuilder buildShipCapacity(int capacity) {
-        this.capacity = capacity; //set
+        this.capacity = capacity;
         return this;
     }
 

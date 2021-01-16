@@ -1,24 +1,33 @@
 package com.designpatterns.builder;
 
+import com.designpatterns.BaseTest;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
-class ShipTest {
+@Slf4j
+public class ShipTest extends BaseTest {
 
     @Test
-    public static void shipTest() {
-        Ship ship1 = new ShipBuilder()
-                .buildShipName("AL") //..
-                .buildShipLength(343) //..
-                .buildShipCapacity(4000) //intermediate operators
-                .buildShip(); //terminal operation
+    public void testShipWithBuilderPattern() {
+        Ship ship = new ShipBuilder()
+                .buildShipName("AL")
+                .buildShipLength(343)
+                .buildShipCapacity(4000)
+                .buildShip();
+
+        soft.assertThat(ship.getCapacity()).isEqualTo(4000);
+        soft.assertThat(ship.getShipName()).isEqualTo("AL");
+        soft.assertThat(ship.getLength()).isEqualTo(343);
     }
 
     @Test
-    public static void shipTest2() {
-        Ship ship1 = new ShipBuilder()
-                .with(ship -> ship.buildShipName("AD"))
-                .buildShipLength(432)
-                .buildShipCapacity(3000)
-                .buildShip();
+    public void testShipWithoutBuilderPattern() {
+        Ship ship = new ShipBuilder().buildShip();
+        ship.setShipName("AD");
+        ship.setCapacity(5000);
+        ship.setLength(376);
+        soft.assertThat(ship.getCapacity()).isEqualTo(5000);
+        soft.assertThat(ship.getShipName()).isEqualTo("AD");
+        soft.assertThat(ship.getLength()).isEqualTo(376);
     }
 }

@@ -1,5 +1,8 @@
 package com.designpatterns.builder;
 
+import lombok.Data;
+
+@Data
 public class Ship {
 
     private String shipName;
